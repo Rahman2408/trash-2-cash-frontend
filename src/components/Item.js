@@ -30,7 +30,7 @@ class Item {
       const {name, description, price, imageUrl, id} = this.itemInfo
       document.getElementById("item-container").innerHTML += 
       `<div class="item-card" data-id=${id}>
-        <p class="itemPic"><img src=${imageUrl} alt=${name}/></p> 
+        <p class="itemPic"><img src=${imageUrl} alt="No Img"/></p> 
         <h4 class="title">${name}</h4>
         <p class="price">$${price}</p><br>   
       </div>`

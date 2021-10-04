@@ -33,7 +33,35 @@ img{
   border-radius: 45%;
   background-color:rgb(247, 210, 140);
   font-family:Consolas,Monaco,"Andale Mono",monospace;
-  color:brown;
-  
- 
+  color:brown; 
 }
+/* Credit for loayout as to how the modal elements appear on page goes to w3schools.com/howto/howto_css_modals */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #ceb562;
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover{
+  cursor: pointer;
+  color: blue;
+}
+
