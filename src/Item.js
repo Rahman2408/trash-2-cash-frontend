@@ -18,6 +18,13 @@ class Item {
       return sum;
     }
     
+    static renderBank = () => {
+      const bank = document.getElementById("bank");
+      const bankEl = document.createElement("h2");
+      bankEl.innerHTML = `Your Bank: $${Item.currentBank()} `;
+      bank.appendChild(bankEl);
+    }
+
     renderItem = () => {
       const {name, description, price, imageUrl} = this.itemInfo
       document.getElementById("item-container").innerHTML += 
@@ -33,15 +40,20 @@ class Item {
       new Item(item)
     }
 
-    static renderIndex(){
+    static handleClick = (e) => {
+      console.log(e)
+    }
+
+    static renderIndex = () => {
       const itemContainer = document.createElement("div")
       itemContainer.id = "item-container"
       document.getElementById("main").appendChild(itemContainer)
       this.all.forEach(item => item.renderItem())
+      itemContainer.addEventListener("click", this.handleClick )
     }
 
 
-    static getItems(){
+    static getItems = () => {
       api.getItems().then(items =>{
         items.forEach(item => Item.add(item))
         this.renderIndex()
