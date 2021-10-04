@@ -8,11 +8,11 @@ class Item {
       console.log(this)
     }
 
-    static addItem(item){
+    static add(item){
       new Item(item)
     }
 
-    static renderItems(){
+    static renderIndex(){
       const itemContainer = document.createElement("div")
       itemContainer.classList.add("item-container")
       document.getElementById("main").appendChild(itemContainer)
@@ -21,8 +21,8 @@ class Item {
 
     static getItems(){
       api.getItems().then(items =>{
-        items.forEach(item => Item.addItem(item))
-        this.renderItems()
+        items.forEach(item => Item.add(item))
+        this.renderIndex()
       })
     }
 
