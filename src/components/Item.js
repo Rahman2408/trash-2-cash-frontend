@@ -27,7 +27,7 @@ class Item {
 
    
     renderItem = () => {
-      const {name, description, price, imageUrl, id} = this.itemInfo
+      const {name, price, imageUrl, id} = this.itemInfo
       document.getElementById("item-container").innerHTML += 
       `<div class="item-card" data-id=${id}>
         <p class="itemPic"><img src=${imageUrl} alt="No Img"/></p> 
