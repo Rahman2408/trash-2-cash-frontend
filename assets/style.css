@@ -14,12 +14,12 @@ body {
 .item-card{
   border: 4px solid;
   border-radius: 6%;
-  padding: auto;
+  padding: 1em;
 
 }
 img{
-  max-width: 2in;
-  max-height: 2in; 
+  max-width: 1in;
+  max-height: 1in; 
 
  }
 
@@ -27,4 +27,13 @@ img{
   text-decoration: underline ;
   color: brown;
   cursor: pointer;
+}
+#header{
+  border: 8px solid ;
+  border-radius: 45%;
+  background-color:rgb(247, 210, 140);
+  font-family:Consolas,Monaco,"Andale Mono",monospace;
+  color:brown;
+  
+ 
 }
