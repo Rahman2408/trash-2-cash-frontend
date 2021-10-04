@@ -9,14 +9,13 @@ class Item {
     }
 
     renderItem = () => {
-      const {name, description, price, forSale, imageUrl} = this.itemInfo
-      document.querySelector(".item-container").innerHTML += 
+      const {name, description, price, imageUrl} = this.itemInfo
+      document.getElementById("item-container").innerHTML += 
       `<div class="item-card">
-        
-        <h4 class="title">${name}</h4>
-        <p class="description">${description}</p>
-        <p class="price">$${price}</p>
         <p class="itemPic"><img src=${imageUrl} alt=${name}/></p> 
+        <h4 class="title">${name}</h4>
+        <p class="price">$${price}</p><br>
+        <p class="description">${description}</p>        
       </div>`
     }
 
@@ -26,7 +25,7 @@ class Item {
 
     static renderIndex(){
       const itemContainer = document.createElement("div")
-      itemContainer.classList.add("item-container")
+      itemContainer.id = "item-container"
       document.getElementById("main").appendChild(itemContainer)
       this.all.forEach(item => item.renderItem())
     }
