@@ -32,8 +32,7 @@ class Item {
       `<div class="item-card" data-id=${id}>
         <p class="itemPic"><img src=${imageUrl} alt=${name}/></p> 
         <h4 class="title">${name}</h4>
-        <p class="price">$${price}</p><br>
-        <p class="description">${description}</p>        
+        <p class="price">$${price}</p><br>   
       </div>`
     }
 
@@ -42,7 +41,17 @@ class Item {
     }
 
     renderShow = () => {
-      console.log(this)
+      const {name, description, price, imageUrl} = this.itemInfo
+      document.getElementById("main").innerHTML = 
+      `<div class="show">
+      <h2 class="showName">${name}</h2>
+        <p><img src=${imageUrl} alt= "(No Photo Yet)"/></p>
+        <h3 class="showPrice">Price:<br> $${price}</h3>
+        <p><strong> Details:</strong> </p>
+        <p class="showDesc">${description}</p>
+      </div>
+      <button id="backButton">Go Back</button>`
+      document.getElementById("backButton").addEventListener("click", Item.renderIndex)
     }
     
     static find = (id) => this.all.find(item => item.itemInfo.id == id)
@@ -57,7 +66,9 @@ class Item {
     static renderIndex = () => {
       const itemContainer = document.createElement("div")
       itemContainer.id = "item-container"
-      document.getElementById("main").appendChild(itemContainer)
+      const main = document.getElementById("main")
+      main.innerHTML = ""
+      main.appendChild(itemContainer)
       this.all.forEach(item => item.renderItem())
       itemContainer.addEventListener("click", this.handleClick )
     }
