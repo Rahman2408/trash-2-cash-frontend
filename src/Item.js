@@ -7,7 +7,17 @@ class Item {
       this.constructor.all.push(this)
       console.log(this)
     }
-
+    
+    static currentBank = () => {
+      let sum = 0
+      Item.all.forEach(element => {
+        if (element.itemInfo['price'] && element.itemInfo['forSale']){
+          sum += element.itemInfo['price'] 
+        }
+        });
+      return sum;
+    }
+    
     renderItem = () => {
       const {name, description, price, imageUrl} = this.itemInfo
       document.getElementById("item-container").innerHTML += 
