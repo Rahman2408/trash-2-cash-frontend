@@ -25,10 +25,11 @@ class Item {
       bank.appendChild(bankEl);
     }
 
+   
     renderItem = () => {
-      const {name, description, price, imageUrl} = this.itemInfo
+      const {name, description, price, imageUrl, id} = this.itemInfo
       document.getElementById("item-container").innerHTML += 
-      `<div class="item-card">
+      `<div class="item-card" data-id=${id}>
         <p class="itemPic"><img src=${imageUrl} alt=${name}/></p> 
         <h4 class="title">${name}</h4>
         <p class="price">$${price}</p><br>
@@ -40,8 +41,17 @@ class Item {
       new Item(item)
     }
 
+    renderShow = () => {
+      console.log(this)
+    }
+    
+    static find = (id) => this.all.find(item => item.itemInfo.id == id)
+
     static handleClick = (e) => {
-      console.log(e)
+      if (e.target.tagName == "IMG" || e.target.classList.contains("title")){
+        const id = e.target.closest(".item-card").dataset.id
+        this.find(id).renderShow()
+      }
     }
 
     static renderIndex = () => {
