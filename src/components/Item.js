@@ -8,22 +8,22 @@ class Item {
       console.log(this)
     }
     
-    static currentBank = () => {
-      let sum = 0
-      Item.all.forEach(element => {
-        if (element.itemInfo['price'] && element.itemInfo['forSale']){
-          sum += element.itemInfo['price'] 
-        }
-        });
-      return sum;
-    }
+    // static currentBank = () => {
+    //   let sum = 0
+    //   Item.all.forEach(element => {
+    //     if (element.itemInfo['price'] && element.itemInfo['forSale']){
+    //       sum += element.itemInfo['price'] 
+    //     }
+    //     });
+    //   return sum;
+    // }
     
-    static renderBank = () => {
-      const bank = document.getElementById("bank");
-      const bankEl = document.createElement("h2");
-      bankEl.innerHTML = `Your Bank: $${Item.currentBank()} `;
-      bank.appendChild(bankEl);
-    }
+    // static renderBank = () => {
+    //   const bank = document.getElementById("bank");
+    //   const bankEl = document.createElement("h2");
+    //   bankEl.innerHTML = `Your Bank: $${Item.currentBank()} `;
+    //   bank.appendChild(bankEl);
+    // }
 
    
     renderItem = () => {
@@ -68,7 +68,10 @@ class Item {
       itemContainer.id = "item-container"
       const main = document.getElementById("main")
       main.innerHTML = ""
-      main.appendChild(itemContainer)
+      const addItem = document.createElement("button")
+      addItem.innerText = "Add Item to Sell"
+      addItem.addEventListener("click", modal.open)
+      main.append(itemContainer, addItem)
       this.all.forEach(item => item.renderItem())
       itemContainer.addEventListener("click", this.handleClick )
     }
