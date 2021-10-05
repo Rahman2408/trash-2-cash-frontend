@@ -5,7 +5,6 @@ class Item {
     constructor(itemInfo){
       this.itemInfo = itemInfo
       this.constructor.all.push(this)
-      console.log(this)
     }
     
     // static currentBank = () => {
