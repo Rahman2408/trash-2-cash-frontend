@@ -23,8 +23,35 @@ class Item {
     //   bankEl.innerHTML = `Your Bank: $${Item.currentBank()} `;
     //   bank.appendChild(bankEl);
     // }
+    static handleSubmit = (e) => {
+      e.preventDefault()
+      const newItem = {
+        name: e.target.itemName.value, 
+        price: e.target.price.value, 
+        image_url: e.target.imageUrl.value,
+        description: e.target.description.value,
+        for_sale: true
+      }
+      console.log(newItem)
+    }
 
-   
+    static sellItemForm = () => {
+      modal.main.innerHTML = 
+        `<form>
+          <label for="itemName">Item to Sell:</label><br>
+          <input type="text" id="itemName" name="itemName"><br>
+          <label for="price">Price (Round Whole Dollars):</label><br>
+          $<input type="number" id="price" name="price"><br>
+          <label for="imageUrl">Link to Image of Item:</label><br>
+          <input type="text" id="imageUrl" name="imageUrl"><br>
+          <label for="description">Item Description:</label><br>
+          <input type="text" id="description" name="description"><br>
+          <input type="submit" value="Submit">
+        </form>`
+      modal.main.querySelector("form").addEventListener("submit", this.handleSubmit)
+      modal.open()
+    }
+
     renderItem = () => {
       const {name, price, imageUrl, id} = this.itemInfo
       document.getElementById("item-container").innerHTML += 
@@ -69,7 +96,7 @@ class Item {
       main.innerHTML = ""
       const addItem = document.createElement("button")
       addItem.innerText = "Add Item to Sell"
-      addItem.addEventListener("click", modal.open)
+      addItem.addEventListener("click", this.sellItemForm)
       main.append(itemContainer, addItem)
       this.all.forEach(item => item.renderItem())
       itemContainer.addEventListener("click", this.handleClick )
