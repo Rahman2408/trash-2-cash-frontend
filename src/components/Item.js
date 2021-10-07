@@ -32,7 +32,11 @@ class Item {
         description: e.target.description.value,
         for_sale: true
       }
-      console.log(newItem)
+      api.createItem(newItem).then(item => {
+          new Item(item).renderItem()
+        })
+      modal.close()
+      e.target.reset()
     }
 
     static sellItemForm = () => {
