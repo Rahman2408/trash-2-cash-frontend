@@ -4,6 +4,7 @@ class Item {
 
     constructor(itemInfo){
       this.itemInfo = itemInfo
+      this.salespoints = this.itemInfo.salespoints.map(site => new Salespoint(site))
       this.constructor.all.push(this)
     }
     
