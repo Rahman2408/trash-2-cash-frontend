@@ -81,8 +81,10 @@ class Item {
         <p><strong> Details:</strong> </p>
         <p class="showDesc">${description}</p>
       </div>
+      <div class="container"><strong>This item is listed on:</strong><br></div>
       <button id="backButton">Go Back</button>`
       document.getElementById("backButton").addEventListener("click", Item.renderIndex)
+      this.salespoints.forEach(sPoint => sPoint.render())
     }
     
     static find = (id) => this.all.find(item => item.itemInfo.id == id)
