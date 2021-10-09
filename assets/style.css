@@ -62,7 +62,7 @@ img{
   font-weight: bold;
 }
 
-.close:hover{
+.close:hover, button:hover{
   cursor: pointer;
   color: blue;
 }
