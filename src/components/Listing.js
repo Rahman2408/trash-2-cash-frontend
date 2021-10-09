@@ -9,22 +9,24 @@ static all =[]
     return this.all
   }
 
-  render = () => {
+  renderListing = () => {
     const {name, site} = this.data
-    const card = document.querySelector(".container")
+    const card = document.querySelector(".listings")
     const cardEl = document.createElement("div")
-    cardEl.id = "listSites"
-    cardEl.innerHTML += `
-      <a href=${site}>
-      <h4>${name}</h4>
-      </a>
-    `
+    cardEl.className = "list-card"
     card.appendChild(cardEl)
+    cardEl.innerHTML += `
+      <h4>${name}</h4>
+      <p>${site}</p>
+      `
+    // document.querySelector("listSites").addEventListener("click", function(e){
+    //   if (e.target.classList.contains("")){}
+    // })
   }
   
   static find = (id) => this.all.find(site => site.data.id == id)
 
-  static newSite = () => {
+  static newList = () => {
     modal.open()
     modal.main.innerHTML = ""
     const siteIn = document.createElement("form")

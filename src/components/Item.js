@@ -59,18 +59,22 @@ class Item {
       const {name, description, price, imageUrl} = this.itemInfo
       document.getElementById("main").innerHTML = 
       `<div class="show">
-      <h2 class="showName">${name}</h2>
-      <p><img src=${imageUrl} alt= "(No Photo Yet)"/></p>
-      <h3 class="showPrice">Price:<br> $${price}</h3>
-      <p><strong> Details:</strong> </p>
-      <p class="showDesc">${description}</p>
+        <h2 class="showName">${name}</h2>
+        <p><img src=${imageUrl} alt= "(No Photo Yet)"/></p>
+        <h3 class="showPrice">Price:<br> $${price}</h3>
+        <p><strong> Details:</strong> </p>
+        <p class="showDesc">${description}</p>
+          <div class="listings" ><h3>Listings:</h3> </div>
       </div>
-      <div class="container"><strong>You're selling this on:</strong><br></div>
-      <button id="addSite">Add a Website to List Item</button><br><br>
-      <button id="backButton">Go Back</button>`
+      <button id="backButton">Go Back</button>
+      `
       document.getElementById("backButton").addEventListener("click", Item.renderIndex)
-      document.getElementById("addSite").addEventListener("click", Listing.newSite)
-      this.listings.forEach(sPoint => sPoint.render())
+      if (this.listings.length > 0){
+        this.listings.forEach(listSite => listSite.renderListing())
+        }
+      else {
+        document.querySelector(".listings").innerHTML += "<p>No listings for this item yet!</p>"
+      }
     }
     
     static find = (id) => this.all.find(item => item.itemInfo.id == id)
