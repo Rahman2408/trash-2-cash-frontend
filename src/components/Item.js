@@ -4,7 +4,6 @@ class Item {
 
     constructor(itemInfo){
       this.itemInfo = itemInfo
-      this.listings = this.itemInfo.listings.map(site => new Listing(site))
       this.constructor.all.push(this)
     }
     
@@ -55,26 +54,22 @@ class Item {
       new Item(item)
     }
     
+    
+
     renderShow = () => {
       const {name, description, price, imageUrl} = this.itemInfo
       document.getElementById("main").innerHTML = 
-      `<div class="show">
+      `
+      <button id="backButton">Go Back</button>
+      <div class="show">
         <h2 class="showName">${name}</h2>
         <p><img src=${imageUrl} alt= "(No Photo Yet)"/></p>
         <h3 class="showPrice">Price:<br> $${price}</h3>
         <p><strong> Details:</strong> </p>
         <p class="showDesc">${description}</p>
-          <div class="listings" ><h3>Listings:</h3> </div>
       </div>
-      <button id="backButton">Go Back</button>
       `
-      document.getElementById("backButton").addEventListener("click", Item.renderIndex)
-      if (this.listings.length > 0){
-        this.listings.forEach(listSite => listSite.renderListing())
-        }
-      else {
-        document.querySelector(".listings").innerHTML += "<p>No listings for this item yet!</p>"
-      }
+      document.getElementById("backButton").addEventListener("click", Item.renderIndex)   
     }
     
     static find = (id) => this.all.find(item => item.itemInfo.id == id)
@@ -84,6 +79,7 @@ class Item {
         const id = e.target.closest(".item-card").dataset.id
         this.find(id).renderShow()
       }
+      
     }
     
     static renderIndex = () => {
@@ -107,19 +103,3 @@ class Item {
       })
     }
   }
-  // static currentBank = () => {
-  //   let sum = 0
-  //   Item.all.forEach(element => {
-  //     if (element.itemInfo['price'] && element.itemInfo['forSale']){
-  //       sum += element.itemInfo['price'] 
-  //     }
-  //     });
-  //   return sum;
-  // }
-  
-  // static renderBank = () => {
-  //   const bank = document.getElementById("bank");
-  //   const bankEl = document.createElement("h2");
-  //   bankEl.innerHTML = `Your Bank: $${Item.currentBank()} `;
-  //   bank.appendChild(bankEl);
-  // }
