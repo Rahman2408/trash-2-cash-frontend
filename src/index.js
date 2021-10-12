@@ -3,7 +3,16 @@ const api = new ApiService("http://localhost:3000")
 
 const modal = new Modal()
 
-Item.getItems()
 
-Listing.getSites()
 
+
+// Item.getItems()
+
+// Listing.getSites()
+
+document.querySelector("form").addEventListener("submit", handleUserSubmit)
+
+function handleUserSubmit(e) {
+  e.preventDefault()
+  
+}
