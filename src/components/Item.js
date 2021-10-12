@@ -33,7 +33,7 @@ class Item {
       <label for="imageUrl">Link to Image of Item:</label><br>
       <input type="text" id="imageUrl" name="imageUrl"><br>
       <label for="description">Item Description:</label><br>
-      <input type="text" id="description" name="description"><br>
+      <input type="textarea" id="description" name="description"><br>
       <input type="submit" value="Submit">
       </form>`
       modal.main.querySelector("form").addEventListener("submit", this.handleSubmit)
@@ -42,7 +42,8 @@ class Item {
     
     renderItem = () => {
       const {name, price, imageUrl, id} = this.itemInfo
-      document.getElementById("item-container").innerHTML += 
+      const itemCard = document.getElementById("item-container")
+      itemCard.innerHTML += 
       `<div class="item-card" data-id=${id}>
       <p class="itemPic"><img src=${imageUrl} alt="No Img"/></p> 
       <h4 class="title">${name}</h4>
@@ -65,7 +66,7 @@ class Item {
         <h2 class="showName">${name}</h2>
         <p><img src=${imageUrl} alt= "(No Photo Yet)"/></p>
         <h3 class="showPrice">Price:<br> $${price}</h3>
-        <p><strong> Details:</strong> </p>
+        <p><strong> Description:</strong> </p>
         <p class="showDesc">${description}</p>
       </div>
       `
