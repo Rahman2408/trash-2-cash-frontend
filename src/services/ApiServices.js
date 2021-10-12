@@ -15,7 +15,8 @@ class ApiService {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(newItem),
   })
-  .then(response => response.json())}
+  .then(response => response.json())
+  }
   
   addListing = (listings) => {
   
@@ -25,17 +26,7 @@ class ApiService {
     body: JSON.stringify(listings),
   })
   .then(response => response.json())
-}
-  
-  // findOrCreateUser = (username) => {
-  //   return fetch(this.api + "/users", {
-  //     method: 'POST', 
-  //     headers: { 
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({username}),
-  //   })
-  //   .then(response => response.json())
-  // }
+  }
+ 
 }
 

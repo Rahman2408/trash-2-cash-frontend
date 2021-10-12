@@ -38,18 +38,26 @@ class Listing{
   }
 
   renderListingSite = () => {
-    const {name, site} = this.data
+    const {id, name, site} = this.data
     const card = document.getElementById("listMain")    
     const cardEl = document.createElement("div")
     cardEl.className= "list-card"
+    const dropListing = document.createElement("button")
+    dropListing.innerText = "Delete Site"
     card.appendChild(cardEl)
     cardEl.innerHTML +=  
     `
     <h4>${name}</h4>
     <p><strong>Site:  </strong>${site}</p>
     `
-   }
-
+    cardEl.appendChild(dropListing)
+    dropListing.addEventListener("click", () => {
+      return fetch(`http://localhost:3000/listings/${id}`, {
+      method: 'DELETE',
+    })
+  .then(()=>cardEl.remove())
+  })
+  }
 
    static renderListIndex = () => {
     const listSiteContainer = document.createElement("div")
