@@ -1,7 +1,7 @@
 # trash2cash-frontend
 
 # README
-Group Project Builder
+Trash to Cash
 
 ##Frontend - https://github.com/Rahman2408/trash2cash-frontend.git
 ##Backend - https://github.com/Rahman2408/trash2cash-backend.git
